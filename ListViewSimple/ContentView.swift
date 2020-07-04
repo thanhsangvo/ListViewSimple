@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var phones = [Phone]()
+    
     var body: some View {
-        Text("Hello, world!").padding()
+        NavigationView {
+            List(phones) { (phone) in
+                NavigationLink(
+                    destination: PhoneDetail(phone: phone),
+                    label: {
+                        PhoneCell(phone: phone)
+                    })
+                
+            }
+            .navigationTitle("Iphone")
+        }
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(phones: phoneData)
     }
 }
